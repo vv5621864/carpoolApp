@@ -2,9 +2,9 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
-            <stroke android:width="2dp" android:color="#FFFFFF" />
-            <gradient android:angle="225" android:endColor="#DD000000" android:startColor="#DD2ECCFA" />
-            <corners android:bottomLeftRadius="10dp" android:bottomRightRadius="10dp" android:topLeftRadius="10dp" android:topRightRadius="10dp" />
+            <stroke android:width="@dimen/width_2dp" android:color="@color/white" />
+            <gradient android:angle="225" android:endColor="@color/dark_black" android:startColor="@color/fade_blue" />
+            <corners android:bottomLeftRadius="@dimen/radius_10dp" android:bottomRightRadius="@dimen/radius_10dp" android:topLeftRadius="@dimen/radius_10dp" android:topRightRadius="@dimen/radius_10dp" />
         </shape>
     </item>
 </selector>

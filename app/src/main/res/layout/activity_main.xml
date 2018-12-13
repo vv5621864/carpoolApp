@@ -9,7 +9,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="@dimen/layout_height"
             android:scaleType="fitXY"
             android:src="@drawable/carpool" />
 
@@ -17,42 +17,42 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/margin_20dp"
             android:gravity="center"
-            android:padding="15dp"
-            android:text="Carpooling takes the trek out of the journey."
+            android:padding="@dimen/padding_15dp"
+            android:text="@string/carpool_tag"
             android:textColor="@color/brown"
-            android:textSize="25sp"
+            android:textSize="@dimen/text_size_25sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="@dimen/margin_10dp"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:layout_marginRight="@dimen/margin_10dp"
+            android:layout_marginBottom="@dimen/margin_10dp"
             android:background="@drawable/button_shape"
-            android:padding="5dp"
-            android:text="sign up"
+            android:padding="@dimen/padding_5dp"
+            android:text="@string/signup"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="@dimen/text_size_30sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="@dimen/margin_10dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_marginRight="@dimen/margin_10dp"
+            android:layout_marginBottom="@dimen/margin_10dp"
             android:background="@drawable/button_shape"
-            android:padding="5dp"
-            android:text="log in"
+            android:padding="@dimen/padding_5dp"
+            android:text="@string/login"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="@dimen/text_size_30sp"
             android:textStyle="bold" />
 
 

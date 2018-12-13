@@ -102,17 +102,17 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         String confPass = confirmPassword.getText().toString().trim();
         String genderSelected = gender.getSelectedItem().toString();
         if (fName.equalsIgnoreCase("")) {
-            firstName.setError("This field can not be blank");
+            firstName.setError(getString(R.string.field_blank));
         } else if (lName.equalsIgnoreCase("")) {
-            lastName.setError("This field can not be blank");
+            lastName.setError(getString(R.string.field_blank));
         } else if (birthYear.equalsIgnoreCase("")) {
-            yearView.setError("Select year of birth");
+            yearView.setError(getString(R.string.select_birth_year));
         } else if (emailId.equalsIgnoreCase("")) {
-            email.setError("This field can not be blank");
+            email.setError(getString(R.string.field_blank));
         } else if (pass.equalsIgnoreCase("")) {
-            password.setError("This field can not be blank");
+            password.setError(getString(R.string.field_blank));
         } else if (confPass.equalsIgnoreCase("")) {
-            confirmPassword.setError("This field can not be blank");
+            confirmPassword.setError(getString(R.string.field_blank));
         }
         if (isFnameValid && isLnameValid && isEmailValid && isPassValid && isConfPassValid && isYear) {
             Toast.makeText(this, "Calling Signup API", Toast.LENGTH_SHORT).show();
@@ -123,7 +123,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     public void showYearDialog() {
         int year = Calendar.getInstance().get(Calendar.YEAR);
         d = new Dialog(this);
-        d.setTitle("Year Picker");
+        d.setTitle(getString(R.string.year_picker));
         d.setContentView(R.layout.year_dialog);
         Button set = (Button) d.findViewById(R.id.button1);
         Button cancel = (Button) d.findViewById(R.id.button2);
@@ -164,7 +164,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         if (firstName.getText().hashCode() == s.hashCode()) {
             boolean checkName = validation.validateName(str);
             if (!checkName) {
-                firstName.setError("Wrong name format");
+                firstName.setError(getString(R.string.wrong_name));
                 isFnameValid = false;
             } else {
                 firstName.setError(null);
@@ -173,7 +173,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         } else if (lastName.getText().hashCode() == s.hashCode()) {
             boolean checkName = validation.validateName(str);
             if (!checkName) {
-                lastName.setError("Wrong name format");
+                lastName.setError(getString(R.string.wrong_name));
                 isLnameValid = false;
             } else {
                 lastName.setError(null);
@@ -182,7 +182,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         } else if (email.getText().hashCode() == s.hashCode()) {
             boolean checkEmail = validation.validateEmail(str);
             if (!checkEmail) {
-                email.setError("Wrong email fromat");
+                email.setError(getString(R.string.wrong_name));
                 isEmailValid = false;
             } else {
                 email.setError(null);
@@ -191,10 +191,10 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         } else if (password.getText().hashCode() == s.hashCode()) {
             int passCheck = validation.validatePassword(str);
             if (passCheck == 0) {
-                password.setError("Minimum 8 characters");
+                password.setError(getString(R.string.min_char));
                 isPassValid = false;
             } else if (passCheck == 1) {
-                password.setError("Wrong password format");
+                password.setError(getString(R.string.wrong_pass));
                 isPassValid = false;
             } else {
                 password.setError(null);
@@ -205,7 +205,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                 confirmPassword.setError(null);
                 isConfPassValid = true;
             } else {
-                confirmPassword.setError("Password don't match");
+                confirmPassword.setError(getString(R.string.pass_not_match));
                 isConfPassValid = false;
             }
         }

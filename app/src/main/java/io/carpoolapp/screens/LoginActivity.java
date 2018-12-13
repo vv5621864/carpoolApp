@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 boolean emailCheck = validation.validateEmail(s.toString());
                 if (!emailCheck) {
-                    email.setError("Wrong email fromat");
+                    email.setError(getString(R.string.wrong_email));
                 } else {
                     isEmailValid = true;
                 }
@@ -71,9 +71,9 @@ public class LoginActivity extends AppCompatActivity {
                 String pass = s.toString();
                 int passCheck = validation.validatePassword(pass);
                 if (passCheck == 0) {
-                    password.setError("Minimum 8 characters");
+                    password.setError(getString(R.string.min_char));
                 } else if (passCheck == 1) {
-                    password.setError("Wrong password format");
+                    password.setError(getString(R.string.wrong_pass));
                 } else {
                     isPassValid = true;
                 }
@@ -81,10 +81,8 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
-
     }
 
     @OnClick({R.id.login, R.id.forgotPassword})
@@ -96,9 +94,9 @@ public class LoginActivity extends AppCompatActivity {
                 Pattern pattern = Pattern.compile("a*b");
                 pass.matches("[a-z]+");
                 if (email.getText().toString().trim().equalsIgnoreCase("")) {
-                    email.setError("This field can not be blank");
+                    email.setError(getString(R.string.field_blank));
                 } else if (password.getText().toString().trim().equalsIgnoreCase("")) {
-                    password.setError("This field can not be blank");
+                    password.setError(getString(R.string.field_blank));
                 }
                 if (isEmailValid && isPassValid) {
                     Toast.makeText(this, "Calling Login Api", Toast.LENGTH_SHORT).show();

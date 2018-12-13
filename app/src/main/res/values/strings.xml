@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">CarPoolApp</string>
+    <string name="pass_hint">Password (min. 8 characters)</string>
+    <string name="min_char">Minimum 8 characters</string>
+    <string name="conf_pass">Confirm Password</string>
+    <string name="email_hint">Email</string>
+    <string name="year_picker">Year Picker</string>
+    <string name="login">Log In</string>
+    <string name="forgot_pass">Forgot Password?</string>
+    <string name="carpool_tag">Carpooling takes the trek out of the journey.</string>
+    <string name="signup">Sign Up</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="birth_year">Year of birth</string>
+    <string name="select_birth_year">Selecy year of birth</string>
+    <string name="cancel">Cancel</string>
+    <string name="set">Set</string>
+    <string name="pass_not_match">Password don't match</string>
+    <string name="wrong_name">Wrong name format</string>
+    <string name="wrong_email">Wrong email fromat</string>
+    <string name="wrong_pass">Wrong password format</string>
+    <string name="field_blank">This field can not be blank</string>
+    <!--<string name="password_regex">(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^+=&])(?=\S+$).{8,}</string>-->
 </resources>
