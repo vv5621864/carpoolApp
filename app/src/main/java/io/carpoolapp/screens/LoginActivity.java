@@ -1,5 +1,6 @@
 package io.carpoolapp.screens;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        getSupportActionBar().setTitle(getString(R.string.login));
         validation = new Validation();
         email.addTextChangedListener(new TextWatcher() {
             @Override
@@ -99,7 +101,8 @@ public class LoginActivity extends AppCompatActivity {
                     password.setError(getString(R.string.field_blank));
                 }
                 if (isEmailValid && isPassValid) {
-                    Toast.makeText(this, "Calling Login Api", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
                     //Login API to call
                 }
                 break;

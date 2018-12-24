@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/rides"
+        android:icon="@drawable/ic_rides"
+        android:title="@string/rides" />
+
+    <item
+        android:id="@+id/findRides"
+        android:icon="@drawable/ic_search"
+        android:title="" />
+
+    <item
+        android:id="@+id/createRide"
+        android:icon="@drawable/ic_create_ride"
+        android:title="" />
+
+    <item
+        android:id="@+id/inbox"
+        android:icon="@drawable/ic_inbox"
+        android:title="" />
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_profile"
+        android:title="" />
+</menu>

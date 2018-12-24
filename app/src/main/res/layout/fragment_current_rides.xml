@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/people_meet">
+
+    <TextView
+        android:id="@+id/going"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:text="@string/going"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/text_size_25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/travel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/going"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:text="@string/shareCost"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/text_size_15sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/offerRide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/travel"
+        android:background="@drawable/button_shape"
+        android:padding="@dimen/padding_5dp"
+        android:text="@string/offerRide"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_30sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/findRide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/offerRide"
+        android:background="@drawable/button_shape"
+        android:padding="@dimen/padding_5dp"
+        android:text="@string/findRide"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_30sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

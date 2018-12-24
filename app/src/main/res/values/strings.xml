@@ -15,10 +15,21 @@
     <string name="select_birth_year">Selecy year of birth</string>
     <string name="cancel">Cancel</string>
     <string name="set">Set</string>
-    <string name="pass_not_match">Password don't match</string>
+    <string name="pass_not_match">Password dont match</string>
     <string name="wrong_name">Wrong name format</string>
     <string name="wrong_email">Wrong email fromat</string>
     <string name="wrong_pass">Wrong password format</string>
     <string name="field_blank">This field can not be blank</string>
+    <string name="rides">Rides</string>
+    <string name="yourRides">Your rides</string>
+    <string name="current">CURRENT</string>
+    <string name="history">HISTORY</string>
+    <string name="going">Going somewhere?</string>
+    <string name="shareCost">Share your travel costs with our community.</string>
+    <string name="offerRide">OFFER A RIDE</string>
+    <string name="findRide">FIND A RIDE</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!--<string name="password_regex">(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^+=&])(?=\S+$).{8,}</string>-->
 </resources>

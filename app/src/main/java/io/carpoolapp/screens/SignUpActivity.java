@@ -57,6 +57,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
+        getSupportActionBar().setTitle(getString(R.string.signup));
         String[] genderList = {"Male", "Female"};
         gender.setOnItemSelectedListener(this);
         ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, genderList);
