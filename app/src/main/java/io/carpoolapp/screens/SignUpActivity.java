@@ -1,12 +1,12 @@
 package io.carpoolapp.screens;
 
 import android.app.Dialog;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,16 +20,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.carpoolapp.R;
+import io.carpoolapp.storage.UserDatabase;
+import io.carpoolapp.model.UserDetails;
+import io.carpoolapp.storage.MyPrefrence;
+import io.carpoolapp.validation.Validation;
 
 
-public class SignUpActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, TextWatcher {
+public class SignUpActivity extends AppCompatActivity implements TextWatcher {
 
     @BindView(R.id.gender)
     Spinner gender;
-    @BindView(R.id.firstName)
-    EditText firstName;
-    @BindView(R.id.lastName)
-    EditText lastName;
     @BindView(R.id.yearPicker)
     Button yearPicker;
     @BindView(R.id.email)
@@ -42,11 +42,14 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     Button signup;
     @BindView(R.id.yearView)
     EditText yearView;
+    @BindView(R.id.mobile)
+    EditText mobileNumber;
+    @BindView(R.id.name)
+    EditText fullName;
 
     private Dialog d;
-    private Validation validation;
     private boolean isFnameValid = false;
-    private boolean isLnameValid = false;
+    private boolean isMobileValid = false;
     private boolean isEmailValid = false;
     private boolean isYear = false;
     private boolean isPassValid = false;
@@ -59,28 +62,18 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         ButterKnife.bind(this);
         getSupportActionBar().setTitle(getString(R.string.signup));
         String[] genderList = {"Male", "Female"};
-        gender.setOnItemSelectedListener(this);
         ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, genderList);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         gender.setAdapter(aa);
-        firstName.addTextChangedListener(this);
-        lastName.addTextChangedListener(this);
+        fullName.addTextChangedListener(this);
+        mobileNumber.addTextChangedListener(this);
         yearView.addTextChangedListener(this);
         email.addTextChangedListener(this);
         password.addTextChangedListener(this);
         confirmPassword.addTextChangedListener(this);
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        //
-//        Toast.makeText(getApplicationContext(), parent.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
-    }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
 
     @OnClick({R.id.yearPicker, R.id.signup})
     public void onViewClicked(View view) {
@@ -95,19 +88,19 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     }
 
     private void checkAllFields() {
-        String fName = firstName.getText().toString().trim();
-        String lName = lastName.getText().toString().trim();
+        String userGender = gender.getSelectedItem().toString();
+        String fName = fullName.getText().toString().trim();
+        String mobile = mobileNumber.getText().toString().trim();
         String birthYear = yearView.getText().toString().trim();
         String emailId = email.getText().toString().trim();
         String pass = password.getText().toString().trim();
         String confPass = confirmPassword.getText().toString().trim();
-        String genderSelected = gender.getSelectedItem().toString();
         if (fName.equalsIgnoreCase("")) {
-            firstName.setError(getString(R.string.field_blank));
-        } else if (lName.equalsIgnoreCase("")) {
-            lastName.setError(getString(R.string.field_blank));
+            fullName.setError(getString(R.string.field_blank));
         } else if (birthYear.equalsIgnoreCase("")) {
             yearView.setError(getString(R.string.select_birth_year));
+        } else if (mobile.equalsIgnoreCase("")) {
+            mobileNumber.setError(getString(R.string.field_blank));
         } else if (emailId.equalsIgnoreCase("")) {
             email.setError(getString(R.string.field_blank));
         } else if (pass.equalsIgnoreCase("")) {
@@ -115,9 +108,28 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         } else if (confPass.equalsIgnoreCase("")) {
             confirmPassword.setError(getString(R.string.field_blank));
         }
-        if (isFnameValid && isLnameValid && isEmailValid && isPassValid && isConfPassValid && isYear) {
-            Toast.makeText(this, "Calling Signup API", Toast.LENGTH_SHORT).show();
-            //Signup API call
+        if (isFnameValid && isMobileValid && isEmailValid && isPassValid && isConfPassValid && isYear) {
+            UserDetails userDetails = UserDetails.getInstance();
+            userDetails.setGender(userGender);
+            userDetails.setName(fName);
+            userDetails.setMobile(mobile);
+            userDetails.setYearOfBirth(birthYear);
+            userDetails.setEmail(emailId);
+            userDetails.setPassword(pass);
+            userDetails.setProfileCreationTime(System.currentTimeMillis());
+            userDetails.setProfileModificationTime(System.currentTimeMillis());
+            UserDatabase userDatabase = new UserDatabase(getApplicationContext());
+            String status = userDatabase.addTasks(userDetails);
+            if (status.equalsIgnoreCase(getString(R.string.success))) {
+                MyPrefrence myPrefrence = new MyPrefrence(getApplicationContext());
+                myPrefrence.putValue("isLogIn", mobile);
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            } else {
+                Toast.makeText(this, status, Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -155,33 +167,31 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
     }
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         String str = s.toString();
-        validation = new Validation();
-        if (firstName.getText().hashCode() == s.hashCode()) {
-            boolean checkName = validation.validateName(str);
+        if (fullName.getText().hashCode() == s.hashCode()) {
+            boolean checkName = Validation.validateName(str);
             if (!checkName) {
-                firstName.setError(getString(R.string.wrong_name));
+                fullName.setError(getString(R.string.wrong_name));
                 isFnameValid = false;
             } else {
-                firstName.setError(null);
+                fullName.setError(null);
                 isFnameValid = true;
             }
-        } else if (lastName.getText().hashCode() == s.hashCode()) {
-            boolean checkName = validation.validateName(str);
-            if (!checkName) {
-                lastName.setError(getString(R.string.wrong_name));
-                isLnameValid = false;
+        } else if (mobileNumber.getText().hashCode() == s.hashCode()) {
+            String fMobile = mobileNumber.getText().toString();
+            if (Validation.validateMobile(fMobile)) {
+                mobileNumber.setError(null);
+                isMobileValid = true;
             } else {
-                lastName.setError(null);
-                isLnameValid = true;
+                mobileNumber.setError(getString(R.string.invalidMob));
+                isMobileValid = false;
             }
         } else if (email.getText().hashCode() == s.hashCode()) {
-            boolean checkEmail = validation.validateEmail(str);
+            boolean checkEmail = Validation.validateEmail(str);
             if (!checkEmail) {
                 email.setError(getString(R.string.wrong_name));
                 isEmailValid = false;
@@ -190,7 +200,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                 isEmailValid = true;
             }
         } else if (password.getText().hashCode() == s.hashCode()) {
-            int passCheck = validation.validatePassword(str);
+            int passCheck = Validation.validatePassword(str);
             if (passCheck == 0) {
                 password.setError(getString(R.string.min_char));
                 isPassValid = false;
@@ -215,7 +225,6 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     public void afterTextChanged(Editable s) {
-
     }
 }
 

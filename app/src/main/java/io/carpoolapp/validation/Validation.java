@@ -1,9 +1,9 @@
-package io.carpoolapp.screens;
+package io.carpoolapp.validation;
 
 import android.util.Patterns;
 
 public class Validation {
-    public boolean validateEmail(String email) {
+    public static boolean validateEmail(String email) {
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             return false;
         } else {
@@ -11,7 +11,7 @@ public class Validation {
         }
     }
 
-    public int validatePassword(String pass) {
+    public static int validatePassword(String pass) {
         String regex = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
         if (pass.length() < 8) {
             return 0;
@@ -22,12 +22,21 @@ public class Validation {
         }
     }
 
-    public boolean validateName(String name) {
-        String regex = "[A-Z][a-z\\s]*";
-        if (!name.matches(regex)) {
+    public static boolean validateName(String name) {
+        String regex = "[A-Za-z\\s]+";
+
+        if (!name.trim().matches(regex)) {
             return false;
         } else {
             return true;
         }
+    }
+
+    public static boolean validateMobile(String mobile) {
+        String regex = "[0-9]{10}";
+        if (mobile.trim().replaceAll("[\\s]*", "").matches(regex)) {
+            return true;
+        }
+        return false;
     }
 }

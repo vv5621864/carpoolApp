@@ -1,14 +1,17 @@
-package io.carpoolapp.screens;
+package io.carpoolapp.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-public class PageAdapter extends FragmentStatePagerAdapter {
+import io.carpoolapp.screens.CurrentRidesFragment;
+import io.carpoolapp.screens.HistoryFragment;
+
+public class HomePageAdapter extends FragmentStatePagerAdapter {
 
     private int numberOfTabs;
 
-    public PageAdapter(FragmentManager fm, int numberOfTabs) {
+    public HomePageAdapter(FragmentManager fm, int numberOfTabs) {
         super(fm);
         this.numberOfTabs = numberOfTabs;
     }

@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.percent.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width_0dp"
+        android:layout_weight="6"
+        android:background="@color/blue">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageView"
+            android:layout_centerHorizontal="true"
+            android:clickable="true"
+            android:src="@android:color/white"
+            app:layout_heightPercent="60%"
+            app:layout_marginPercent="6%"
+            app:layout_widthPercent="60%" />
+
+        <ImageView
+            android:id="@+id/editMenuButton"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_edit_menu"
+            app:layout_heightPercent="20%"
+            app:layout_marginTopPercent="4%"
+            app:layout_widthPercent="8%" />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/circleImageView"
+            android:gravity="center"
+            android:text="@string/userName"
+            android:textColor="@color/white"
+            android:textSize="@dimen/margin_20dp"
+            app:layout_marginBottomPercent="5%" />
+    </android.support.percent.PercentRelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width_0dp"
+        android:layout_weight="20"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            app:tabIndicatorColor="@color/white"
+            app:tabSelectedTextColor="@color/green"
+            app:tabTextColor="@color/white"></android.support.design.widget.TabLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/profileViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+    </LinearLayout>
+
+</LinearLayout>

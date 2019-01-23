@@ -1,0 +1,20 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TimePicker xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/timePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"></TimePicker>
+
+    <ImageView
+        android:id="@+id/next"
+        android:layout_width="@dimen/width_40dp"
+        android:layout_height="@dimen/width_40dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_next" />
+</RelativeLayout>

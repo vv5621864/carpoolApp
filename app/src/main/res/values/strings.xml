@@ -9,8 +9,7 @@
     <string name="forgot_pass">Forgot Password?</string>
     <string name="carpool_tag">Carpooling takes the trek out of the journey.</string>
     <string name="signup">Sign Up</string>
-    <string name="first_name">First Name</string>
-    <string name="last_name">Last Name</string>
+    <string name="name">Name</string>
     <string name="birth_year">Year of birth</string>
     <string name="select_birth_year">Selecy year of birth</string>
     <string name="cancel">Cancel</string>
@@ -19,6 +18,7 @@
     <string name="wrong_name">Wrong name format</string>
     <string name="wrong_email">Wrong email fromat</string>
     <string name="wrong_pass">Wrong password format</string>
+    <string name="wrong_mob">Enter 10 digit mobile number</string>
     <string name="field_blank">This field can not be blank</string>
     <string name="rides">Rides</string>
     <string name="yourRides">Your rides</string>
@@ -28,8 +28,35 @@
     <string name="shareCost">Share your travel costs with our community.</string>
     <string name="offerRide">OFFER A RIDE</string>
     <string name="findRide">FIND A RIDE</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="isLogIn">isLogIn</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
+    <string name="prefrence">MyPrefrence</string>
+    <string name="profile">Profile</string>
+    <string name="userName">Vaibhav Vats</string>
+    <string name="editPhoto">Edit my photo</string>
+    <string name="editDetails">Edit my details</string>
+    <string name="details">DETAILS</string>
+    <string name="account">ACCOUNT</string>
+    <string name="about">About you</string>
+    <string name="bio">Write my mini bio</string>
+    <string name="addPrefrence">Add my preferences</string>
+    <string name="verification">Verification</string>
+    <string name="editMail">Edit my email</string>
+    <string name="editPhone">Edit my phone</string>
+    <string name="logout">LOG OUT</string>
+    <string name="databaseName">user_database.db</string>
+    <string name="databaseVersion">1</string>
+    <string name="tableName">user_details</string>
+    <string name="mobile">Mobile</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <!--<string name="password_regex">(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^+=&])(?=\S+$).{8,}</string>-->
+    <string name="dropTable">DROP TABLE IF EXISTS </string>
+    <string name="error">Error</string>
+    <string name="mobileExist">Mobile number already exist</string>
+    <string name="success">Success</string>
+    <string name="name1">name</string>
+    <string name="noMatch">Either mobile or password is wrong</string>
+    <string name="invalidMob">Invalid mobile number</string>
+    <string name="selectDate">Select Date</string>
+    <string name="selectSeats">Select Seats</string>
 </resources>

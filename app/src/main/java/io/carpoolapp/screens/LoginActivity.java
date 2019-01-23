@@ -1,6 +1,7 @@
 package io.carpoolapp.screens;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,11 +18,15 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.carpoolapp.R;
+import io.carpoolapp.storage.UserDatabase;
+import io.carpoolapp.model.UserDetails;
+import io.carpoolapp.storage.MyPrefrence;
+import io.carpoolapp.validation.Validation;
 
 public class LoginActivity extends AppCompatActivity {
 
-    @BindView(R.id.email)
-    EditText email;
+    @BindView(R.id.mobile)
+    EditText mobile;
     @BindView(R.id.password)
     EditText password;
     @BindView(R.id.login)
@@ -31,7 +36,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean isEmailValid = false;
     private boolean isPassValid = false;
-    private Validation validation = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,39 +43,35 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         getSupportActionBar().setTitle(getString(R.string.login));
-        validation = new Validation();
-        email.addTextChangedListener(new TextWatcher() {
+        mobile.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                boolean emailCheck = validation.validateEmail(s.toString());
-                if (!emailCheck) {
-                    email.setError(getString(R.string.wrong_email));
-                } else {
+                if (Validation.validateMobile(s.toString())) {
                     isEmailValid = true;
+                    mobile.setError(null);
+                } else {
+                    mobile.setError(getString(R.string.invalidMob));
                 }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
 
         password.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String pass = s.toString();
-                int passCheck = validation.validatePassword(pass);
+                int passCheck = Validation.validatePassword(pass);
                 if (passCheck == 0) {
                     password.setError(getString(R.string.min_char));
                 } else if (passCheck == 1) {
@@ -91,19 +91,41 @@ public class LoginActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.login:
-                String emailId = email.getText().toString();
+                String id = mobile.getText().toString();
                 String pass = password.getText().toString();
                 Pattern pattern = Pattern.compile("a*b");
                 pass.matches("[a-z]+");
-                if (email.getText().toString().trim().equalsIgnoreCase("")) {
-                    email.setError(getString(R.string.field_blank));
+                if (mobile.getText().toString().trim().equalsIgnoreCase("")) {
+                    mobile.setError(getString(R.string.field_blank));
                 } else if (password.getText().toString().trim().equalsIgnoreCase("")) {
                     password.setError(getString(R.string.field_blank));
                 }
                 if (isEmailValid && isPassValid) {
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                    startActivity(intent);
-                    //Login API to call
+                    UserDatabase userDatabase = new UserDatabase(getApplicationContext());
+                    Cursor res = userDatabase.loginValidate(id, pass);
+                    if (res != null) {
+                        MyPrefrence myPrefrence = new MyPrefrence(this);
+                        myPrefrence.putValue("isLogIn", res.getString(0));
+                        UserDetails userDetails = UserDetails.getInstance();
+                        while (res.moveToNext()) {
+                            userDetails.setMobile(res.getString(0));
+                            userDetails.setGender(res.getString(1));
+                            userDetails.setName(res.getString(2));
+                            userDetails.setEmail(res.getString(3));
+                            userDetails.setPassword(res.getString(4));
+                            userDetails.setYearOfBirth(res.getString(5));
+                            userDetails.setProfileCreationTime(Long.parseLong(res.getString(6)));
+                            userDetails.setProfileModificationTime(Long.parseLong(res.getString(7)));
+                            userDetails.setProfileUri(res.getString(8));
+                        }
+                        res.close();
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(this, getString(R.string.noMatch), Toast.LENGTH_SHORT).show();
+                    }
                 }
                 break;
             case R.id.forgotPassword:
