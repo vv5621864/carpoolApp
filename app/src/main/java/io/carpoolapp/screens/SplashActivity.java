@@ -28,9 +28,7 @@ public class SplashActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_splash);
-//        rideDatabase = new RideDatabase(this);
         userDatabase = new UserDatabase(this);
-
         myPrefrence = new MyPrefrence(this);
         if (!myPrefrence.isKeyExist(getString(R.string.isLogIn))) {
             myPrefrence.putValue(getString(R.string.isLogIn), getString(R.string.no));
@@ -53,6 +51,7 @@ public class SplashActivity extends AppCompatActivity {
                         userDetails.setProfileCreationTime(Long.parseLong(res.getString(6)));
                         userDetails.setProfileModificationTime(Long.parseLong(res.getString(7)));
                         userDetails.setProfileUri(res.getString(8));
+                        userDetails.setActiveRide(res.getString(9));
                     }
                     res.close();
                     intent = new Intent(getApplicationContext(), HomeActivity.class);

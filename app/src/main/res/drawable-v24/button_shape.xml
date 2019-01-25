@@ -3,7 +3,7 @@
     <item>
         <shape>
             <stroke android:width="@dimen/width_2dp" android:color="@color/white" />
-            <gradient android:angle="225" android:endColor="@color/dark_black" android:startColor="@color/fade_blue" />
+            <gradient android:endColor="@color/back_blue" android:startColor="@color/light_green" />
             <corners android:bottomLeftRadius="@dimen/radius_10dp" android:bottomRightRadius="@dimen/radius_10dp" android:topLeftRadius="@dimen/radius_10dp" android:topRightRadius="@dimen/radius_10dp" />
         </shape>
     </item>

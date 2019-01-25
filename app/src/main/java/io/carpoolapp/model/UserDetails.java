@@ -9,6 +9,16 @@ public class UserDetails {
     private String email = null;
     private String password = null;
     private String profileUri = null;
+    private String activeRide = "";
+
+    public String getActiveRide() {
+        return activeRide;
+    }
+
+    public void setActiveRide(String activeRide) {
+        this.activeRide = activeRide;
+    }
+
     private long profileCreationTime = 0;
     private long profileModificationTime = 0;
 

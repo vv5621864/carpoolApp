@@ -30,7 +30,7 @@ public class UserDatabase extends SQLiteOpenHelper {
                 append(Constants.NAME).append(" VARCHAR(30), ").append(Constants.EMAIL).append(" VARCHAR(40), ").append(Constants.PASSWORD).
                 append(" VARCHAR(40), ").append(Constants.BIRTH_YEAR).append(" VARCHAR(4), ").append(Constants.PROFILE_CREATION_TIME).
                 append(" VARCHAR(20), ").append(Constants.PROFILE_LAST_MODIFICATION_TIME).append(" VARCHAR(20), ").
-                append(Constants.PROFILE_URI).append(" VARCHAR(50) );").toString();
+                append(Constants.PROFILE_URI).append(" VARCHAR(50), ").append(Constants.ACTIVE_RIDE).append(" VARCHAR(20));").toString();
         db.execSQL(createUserTable);
         String createRideTable = new StringBuilder().append("CREATE TABLE ").append(Constants.RIDE_TABLE_NAME).append(" (").append(Constants.RIDE_ID).append(" VARCHAR(20) PRIMARY KEY, ").append(Constants.DRIVER_ID).append(" VARCHAR(10), ").append(Constants.PICK_LAT).append(" VARCHAR(15), ").append(Constants.PICK_LONG).append(" VARCHAR(15), ").append(Constants.PICK_ADDRESS).append(" VARCHAR(150), ").append(Constants.DROP_LAT).append(" VARCHAR(15), ").append(Constants.DROP_LONG).append(" VARCHAR(15), ").append(Constants.DROP_ADDRESS).append(" VARCHAR(150), ").append(Constants.DATE_TIME).append(" VARCHAR(20), ").append(Constants.SEATS_AVAILABLE).append(" NUMBER, ").append(Constants.STATUS).append(" VARCHAR(10));").toString();
         db.execSQL(createRideTable);
@@ -63,6 +63,7 @@ public class UserDatabase extends SQLiteOpenHelper {
             values.put(Constants.PASSWORD, userDetails.getPassword());
             values.put(Constants.PROFILE_CREATION_TIME, userDetails.getProfileCreationTime());
             values.put(Constants.PROFILE_LAST_MODIFICATION_TIME, userDetails.getProfileModificationTime());
+            values.put(Constants.ACTIVE_RIDE, "");
             long rowId = db.insert(Constants.TABLE_NAME, null, values);
             if (rowId == -1) {
                 return status = context.getString(R.string.error);

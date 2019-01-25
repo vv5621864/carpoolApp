@@ -18,6 +18,7 @@ public class Constants {
     public static final String PROFILE_CREATION_TIME = "profile_creation_time";
     public static final String PROFILE_LAST_MODIFICATION_TIME = "profile_last_modification_time";
     public static final String PROFILE_URI = "profile_uri";
+    public static String ACTIVE_RIDE = "active_ride";
 
     //RideDatabase
     public static final String RIDE_TABLE_NAME = "ride_details";

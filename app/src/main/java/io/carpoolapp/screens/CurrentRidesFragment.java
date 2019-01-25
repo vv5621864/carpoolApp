@@ -15,6 +15,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import io.carpoolapp.R;
+import io.carpoolapp.model.RideDetails;
+import io.carpoolapp.model.UserDetails;
 
 public class CurrentRidesFragment extends Fragment {
 
@@ -40,7 +42,12 @@ public class CurrentRidesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_current_rides, container, false);
+        String activeRide = UserDetails.getInstance().getActiveRide();
+        if (activeRide.equalsIgnoreCase("")) {
+            view = inflater.inflate(R.layout.fragment_current_rides, container, false);
+        } else {
+
+        }
         ButterKnife.bind(this, view);
         return view;
     }

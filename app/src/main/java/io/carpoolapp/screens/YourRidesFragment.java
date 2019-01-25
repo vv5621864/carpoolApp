@@ -3,20 +3,16 @@ package io.carpoolapp.screens;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 import io.carpoolapp.R;
-import io.carpoolapp.adapter.HomePageAdapter;
+import io.carpoolapp.adapter.YourRidesFragmentAdapter;
 
 public class YourRidesFragment extends Fragment {
 
@@ -50,8 +46,8 @@ public class YourRidesFragment extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.current)), 0);
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.history)), 1);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        HomePageAdapter homePageAdapter = new HomePageAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(homePageAdapter);
+        YourRidesFragmentAdapter yourRidesFragmentAdapter = new YourRidesFragmentAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(yourRidesFragmentAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

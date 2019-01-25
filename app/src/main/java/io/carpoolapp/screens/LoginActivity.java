@@ -117,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                             userDetails.setProfileCreationTime(Long.parseLong(res.getString(6)));
                             userDetails.setProfileModificationTime(Long.parseLong(res.getString(7)));
                             userDetails.setProfileUri(res.getString(8));
+                            userDetails.setActiveRide(res.getString(9));
                         }
                         res.close();
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);

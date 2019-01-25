@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_weight="83"
+    android:layout_weight="80"
     android:orientation="vertical">
 
     <Spinner
@@ -127,7 +127,7 @@
         android:layout_marginTop="@dimen/margin_10dp"
         android:layout_marginRight="@dimen/margin_10dp"
         android:layout_marginBottom="@dimen/margin_10dp"
-        android:layout_weight="13"
+        android:layout_weight="10"
         android:background="@drawable/button_shape"
         android:text="@string/signup"
         android:textColor="@color/white"

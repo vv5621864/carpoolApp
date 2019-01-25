@@ -7,11 +7,11 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import io.carpoolapp.screens.CurrentRidesFragment;
 import io.carpoolapp.screens.HistoryFragment;
 
-public class HomePageAdapter extends FragmentStatePagerAdapter {
+public class YourRidesFragmentAdapter extends FragmentStatePagerAdapter {
 
     private int numberOfTabs;
 
-    public HomePageAdapter(FragmentManager fm, int numberOfTabs) {
+    public YourRidesFragmentAdapter(FragmentManager fm, int numberOfTabs) {
         super(fm);
         this.numberOfTabs = numberOfTabs;
     }

@@ -2,6 +2,7 @@ package io.carpoolapp.storage;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.location.Location;
@@ -26,8 +27,8 @@ public class RideDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = new StringBuilder().append("CREATE TABLE ").append(Constants.RIDE_TABLE_NAME).append(" (").append(Constants.RIDE_ID).append(" VARCHAR(20), ").append(Constants.DRIVER_ID).append(" VARCHAR(10), ").append(Constants.PICK_LAT).append(" VARCHAR(15), ").append(Constants.PICK_LONG).append(" VARCHAR(15), ").append(Constants.PICK_ADDRESS).append(" VARCHAR(150), ").append(Constants.DROP_LAT).append(" VARCHAR(15), ").append(Constants.DROP_LONG).append(" VARCHAR(15), ").append(Constants.DROP_ADDRESS).append(" VARCHAR(150), ").append(Constants.DATE_TIME).append(" VARCHAR(20), ").append(Constants.SEATS_AVAILABLE).append(" NUMBER, ").append(Constants.STATUS).append(" VARCHAR(10))").toString();
-        db.execSQL(query);
+//        String query = new StringBuilder().append("CREATE TABLE ").append(Constants.RIDE_TABLE_NAME).append(" (").append(Constants.RIDE_ID).append(" VARCHAR(20), ").append(Constants.DRIVER_ID).append(" VARCHAR(10), ").append(Constants.PICK_LAT).append(" VARCHAR(15), ").append(Constants.PICK_LONG).append(" VARCHAR(15), ").append(Constants.PICK_ADDRESS).append(" VARCHAR(150), ").append(Constants.DROP_LAT).append(" VARCHAR(15), ").append(Constants.DROP_LONG).append(" VARCHAR(15), ").append(Constants.DROP_ADDRESS).append(" VARCHAR(150), ").append(Constants.DATE_TIME).append(" VARCHAR(20), ").append(Constants.SEATS_AVAILABLE).append(" NUMBER, ").append(Constants.STATUS).append(" VARCHAR(10))").toString();
+//        db.execSQL(query);
     }
 
     @Override

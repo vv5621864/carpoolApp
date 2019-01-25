@@ -1,89 +1,89 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="@dimen/margin_5dp"
     android:orientation="vertical">
 
     <TextView
-        android:layout_margin="@dimen/margin_5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_5dp"
         android:text="pickup"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_30sp" />
 
     <TextView
         android:id="@+id/pickup"
-        android:maxLines="2"
-        android:layout_margin="@dimen/margin_3dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_3dp"
+        android:maxLines="2"
         android:textColor="@color/light_blue"
         android:textSize="@dimen/text_size_20sp" />
 
     <TextView
-        android:layout_margin="@dimen/margin_5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_5dp"
         android:text="drop"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_30sp" />
 
     <TextView
         android:id="@+id/drop"
-        android:maxLines="2"
-        android:layout_margin="@dimen/margin_3dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_3dp"
+        android:maxLines="2"
         android:textColor="@color/light_blue"
         android:textSize="@dimen/text_size_20sp" />
 
     <TextView
-        android:layout_margin="@dimen/margin_5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_5dp"
         android:text="date and time"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_30sp" />
 
     <TextView
         android:id="@+id/dateTime"
-        android:maxLines="1"
-        android:layout_margin="@dimen/margin_3dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_3dp"
+        android:maxLines="1"
         android:textColor="@color/light_blue"
         android:textSize="@dimen/text_size_20sp" />
 
     <TextView
-        android:layout_margin="@dimen/margin_5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_5dp"
         android:text="seats"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_30sp" />
 
     <TextView
         android:id="@+id/seats"
-        android:maxLines="1"
-        android:layout_margin="@dimen/margin_3dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_3dp"
+        android:maxLines="1"
         android:textColor="@color/light_blue"
         android:textSize="@dimen/text_size_20sp" />
 
     <Button
-        android:layout_marginTop="@dimen/margin_10dp"
         android:id="@+id/createRide"
-        android:text="@string/offerRide"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textSize="@dimen/text_size_25sp"
-        android:background="@drawable/button_shape2"
-        android:textColor="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:background="@drawable/button_shape2"
+        android:gravity="center"
+        android:text="@string/offerRide"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_25sp"
+        android:textStyle="bold" />
 </LinearLayout>
